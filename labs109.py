@@ -6,8 +6,12 @@
 def ryerson_letter_grade(pct):
     if pct < 50:
         return 'F'
-    if pct > 100:
+    elif pct > 89:
         return 'A+'
+    elif pct >= 85 and pct < 90:
+        return 'A'
+    elif pct >= 80 and pct < 85:
+        return 'A-'
 
     letter = None
     symbol = None
@@ -33,9 +37,6 @@ def ryerson_letter_grade(pct):
     else:
         symbol = ""
 
-    print(letter + symbol)
+    result = letter + symbol
+    return(result)
 
-ryerson_letter_grade(20)
-ryerson_letter_grade(102)
-ryerson_letter_grade(59)
-ryerson_letter_grade(73)

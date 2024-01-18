@@ -40,3 +40,16 @@ def ryerson_letter_grade(pct):
     result = letter + symbol
     return(result)
 
+# 2. Ascending List
+def is_ascending(items):
+    if len(items) <= 1:
+        return True
+
+    result = True
+    for idx, i in enumerate(items):
+        if (idx + 1) != len(items):
+            if i >= items[idx + 1]:
+                result = False
+
+    return result
+

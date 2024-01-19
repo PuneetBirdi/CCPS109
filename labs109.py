@@ -1,6 +1,7 @@
 # Lab answers for CCPS109 by Puneet Birdi
 # Winter 2024 Semester at Toronto Metropolitan University
 
+import math
 
 # 1. Ryerson Letter Grade
 def ryerson_letter_grade(pct):
@@ -75,11 +76,9 @@ def riffle(items, out=True):
 
     return result
 
-from math import log
-
 # 4. Even The Odds
 def only_odd_digits(n):
-    num_of_digits = int(log(n, 10)) + 1
+    num_of_digits = int(math.log(n, 10)) + 1
 
     remaining = n
     subject = None
@@ -95,4 +94,31 @@ def only_odd_digits(n):
 
     return result
 
+# 5. Cyclops Numbers
+def is_cyclops(n):
 
+    if n == 0:
+        return True
+
+    num_of_digits = int(math.log(n, 10)) + 1
+ 
+    if num_of_digits % 2 == 0:
+        return False
+
+    center_digit = int((n // math.pow(10, num_of_digits // 2))) % 10;
+
+    subject = None
+    remaining = n
+
+    for idx, i in enumerate(range(num_of_digits)):
+        subject = remaining%10
+        remaining = remaining//10
+
+        if subject == 0 and idx != num_of_digits//2:
+            return False
+
+
+    if center_digit == 0:
+        return True
+    else:
+        return False

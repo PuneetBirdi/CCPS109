@@ -53,3 +53,46 @@ def is_ascending(items):
 
     return result
 
+# 3. Riffle Shuffle Kerfuffle
+def riffle(items, out=True):
+    if len(items) == 0:
+        return []
+
+    total_length = len(items)
+    mid_index = int(total_length / 2)
+
+    first_half = items[:total_length//2]
+    second_half = items[total_length//2:]
+    result = []
+
+    for i in range(total_length // 2):
+        if out == True:
+            result.append(first_half[i])
+            result.append(second_half[i])
+        else:
+            result.append(second_half[i])
+            result.append(first_half[i])
+
+    return result
+
+from math import log
+
+# 4. Even The Odds
+def only_odd_digits(n):
+    num_of_digits = int(log(n, 10)) + 1
+
+    remaining = n
+    subject = None
+    result = True
+
+    for i in range(num_of_digits):
+        subject = remaining%10
+        remaining = remaining//10
+
+        if subject%2 == 0:
+            result = False
+            return result
+
+    return result
+
+

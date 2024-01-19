@@ -1,6 +1,7 @@
 # Lab answers for CCPS109 by Puneet Birdi
 # Winter 2024 Semester at Toronto Metropolitan University
 
+import math
 
 # 1. Ryerson Letter Grade
 def ryerson_letter_grade(pct):
@@ -53,3 +54,71 @@ def is_ascending(items):
 
     return result
 
+# 3. Riffle Shuffle Kerfuffle
+def riffle(items, out=True):
+    if len(items) == 0:
+        return []
+
+    total_length = len(items)
+    mid_index = int(total_length / 2)
+
+    first_half = items[:total_length//2]
+    second_half = items[total_length//2:]
+    result = []
+
+    for i in range(total_length // 2):
+        if out == True:
+            result.append(first_half[i])
+            result.append(second_half[i])
+        else:
+            result.append(second_half[i])
+            result.append(first_half[i])
+
+    return result
+
+# 4. Even The Odds
+def only_odd_digits(n):
+    num_of_digits = int(math.log(n, 10)) + 1
+
+    remaining = n
+    subject = None
+    result = True
+
+    for i in range(num_of_digits):
+        subject = remaining%10
+        remaining = remaining//10
+
+        if subject%2 == 0:
+            result = False
+            return result
+
+    return result
+
+# 5. Cyclops Numbers
+def is_cyclops(n):
+
+    if n == 0:
+        return True
+
+    num_of_digits = int(math.log(n, 10)) + 1
+ 
+    if num_of_digits % 2 == 0:
+        return False
+
+    center_digit = int((n // math.pow(10, num_of_digits // 2))) % 10;
+
+    subject = None
+    remaining = n
+
+    for idx, i in enumerate(range(num_of_digits)):
+        subject = remaining%10
+        remaining = remaining//10
+
+        if subject == 0 and idx != num_of_digits//2:
+            return False
+
+
+    if center_digit == 0:
+        return True
+    else:
+        return False

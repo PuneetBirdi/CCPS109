@@ -101,11 +101,11 @@ def is_cyclops(n):
         return True
 
     num_of_digits = int(math.log(n, 10)) + 1
- 
+    center_digit = int((n // math.pow(10, num_of_digits // 2))) % 10;
+    
     if num_of_digits % 2 == 0:
         return False
 
-    center_digit = int((n // math.pow(10, num_of_digits // 2))) % 10;
 
     subject = None
     remaining = n
@@ -122,3 +122,24 @@ def is_cyclops(n):
         return True
     else:
         return False
+
+# 6. Domino Cycle
+def domino_cycle(tiles):
+    num_of_tiles = len(tiles)
+
+    if num_of_tiles == 0:
+        return True
+
+    if num_of_tiles == 1 and tiles[0][0] == tiles[0][1]:
+        return True
+    elif num_of_tiles == 1 and tiles[0][0] != tiles[0][1]:
+        return False
+    elif tiles[0][0] != tiles[-1][1]:
+        return False
+
+    for idx, tile in enumerate(tiles):
+        if (idx + 1) != num_of_tiles:
+            if tile[1] != tiles[idx + 1][0]:
+                return False
+
+    return True
